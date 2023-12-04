@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+  <title>Home</title>
+</head>
+<body>
+	<div class="main_container">
+
+		<div class="header">
+
+			<div class="burger_menu_div" onclick="toggleMenu()">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+
+			<!-- Menu Overlay -->
+			<div id="menu-overlay" class="menu-overlay"></div>
+
+			<!-- Menu Content -->
+			<div id="menu-content" class="menu-content">
+
+				<div class="menu_option">
+					<a href="#" onclick="toggleMenu()">My Profile</a>
+				</div>
+
+				<div class="menu_option">
+					<a href="#" onclick="toggleMenu()">My Affiliate Link</a>
+				</div>
+
+				<div class="menu_option">
+					<a href="#" onclick="toggleMenu()">My Affiliate Earning</a>
+				</div>
+
+				<div class="menu_option">
+					<a href="#" onclick="toggleMenu()">Logout</a>
+				</div>
+			  
+			</div>
+
+			<div class="logo_div">
+				<img class="logo_img" src="{% static 'images/chainocity_logo.jpg' %}" alt="logo">
+				<div class="logo_txt">
+					chainocity
+				</div>
+				
+			</div>
+			
+
+		</div>
+
+		<div class="body">
+
+			<div class="note">
+				Note: Only users with a plan can use services.
+			</div>
+
+			<div class="product_div">
+
+				<div class="p_title_div">
+					Product A
+				</div>
+
+				<div class="p_img_div">
+					<img class="p_img" src="/product A.jpg">
+				</div>
+
+				<div class="p_stock_div">
+					stocked
+				</div>
+
+				<div class="p_dsc_div">
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore alias dolorum cumque! Minima nostrum 
+				</div>
+
+			</div>
+
+
+
+
+
+			
+
+
+			
+
+		</div>
+
+
+
+	</div>
+</body>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  var menuOverlay = document.getElementById('menu-overlay');
+  var menuContent = document.getElementById('menu-content');
+
+  menuOverlay.style.width = '0';
+  menuContent.style.left = '-250px';
+
+  // Close the menu when clicking outside of it
+  menuOverlay.addEventListener('click', function() {
+    toggleMenu();
+  });
+});
+
+function toggleMenu() {
+  var menuOverlay = document.getElementById('menu-overlay');
+  var menuContent = document.getElementById('menu-content');
+
+  if (getComputedStyle(menuOverlay).width === '100%' || menuOverlay.style.width === '100%') {
+    menuOverlay.style.width = '0';
+    menuContent.style.left = '-250px';
+  } else {
+    menuOverlay.style.width = '100%';
+    menuContent.style.left = '0';
+  }
+}
+
+  </script>
+</html>

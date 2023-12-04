@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <title>Chainocity</title>
+</head>
+<body>	
+	<div class="main_container">
+
+		<div class="header">
+
+			<div class="logo_div">
+
+				<div class="logo">
+					<img class="logo_img" alt="logo" src=" {% static 'images/chainocity_logo.jpg' %} ">
+				</div>
+				<div class="title">
+					<p>Chainocity</p>
+				</div>
+
+			</div>
+
+			<div class="header_btns">
+				
+				<div class="signup_div">
+					<a href="{% url 'signup' %}">
+            <button class="signup_btn">Signup</button>
+        </a>
+				</div>
+
+				<div class="login_div">
+					<a href="{% url 'login' %}">
+            <button class="login_btn">Login</button>
+        </a>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="body">
+
+			<div class="upper_body">
+
+				<div class="upr_txt_div">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima eius 
+				</div>
+
+				<div class="upr_img_div">
+					<img src="{% static 'images/chainocity_img1.jpg' %}" class="upr_img" alt="{% static 'images/chainocity_img1.jpg' %}">
+				</div>
+
+			</div>
+
+			<div class="lower_body">
+
+				
+				<div class="lower_txt_div">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis hic, voluptatum rerum, nisi voluptatibus nostrum cumque explicabo repellat nulla, odio error 
+				</div>
+
+				<div class="lower_img_div">
+					<img src="{% static 'images/img2.jpg' %}" class="lower_img" alt="{% static 'images/img2.jpg' %}">
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="footer">
+			company info
+		</div>
+
+	</div>
+  
+</body>
+</html>

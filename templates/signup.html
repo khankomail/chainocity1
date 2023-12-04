@@ -1,0 +1,169 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+
+  <title>signup</title>
+</head>
+<body>
+	<div class="main_container">
+		
+		<div class="header">
+			
+			<div class="back_arrow_div">
+        <a href="{% url 'index' %}" style="color: white;">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+				
+			</div>
+
+			<div class="title_div">
+				Signup
+			</div>
+
+		</div>
+
+		<div class="body">
+
+      <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        
+        <div class="full_name_div">
+            <div class="name_label">
+                Enter Full Name
+            </div>
+            <div class="name_input_div">
+                <input class="name_input" type="text" name="full_name">
+            </div>
+        </div>
+
+        <div class="email_div">
+            <div class="email_label">
+                Enter Your Email
+            </div>
+            <div class="email_label_div">
+                <input class="email_input" type="email" name="email">
+            </div>
+        </div>
+
+        <div class="dob_div">
+            <div class="dob_label">
+                Enter Your Date of Birth
+            </div>
+            <div class="dob_input_div">
+                <input class="dob_input" type="date" name="dob">
+            </div>
+        </div>
+
+        <div class="pswd_div">
+            <div class="pswd_label">
+                Enter Password
+            </div>
+            <div class="pswd_input_div">
+                <input class="pswd_input" type="password" name="password">
+            </div>
+        </div>
+
+        <div class="re_pswd_div">
+            <div class="re_pswd_label">
+                Confirm Password
+            </div>
+            <div class="re_pswd_input_div">
+                <input class="re_pswd_input" type="password" name="confirm_password">
+            </div>
+        </div>
+
+        <div class="submit_div">
+            <button type="submit" class="submit_btn">Submit</button>
+        </div>
+
+    </form>
+		</div>
+
+	</div>
+  
+</body>
+
+<script>
+  
+	document.addEventListener('DOMContentLoaded', function () {
+  // Initialize red flag to false
+  var red = false;
+
+  // code for correct name syntax of name input
+  var nameInput = document.querySelector('.name_input');
+  nameInput.addEventListener('input', function () {
+    var regex = /^[a-zA-Z]+[a-zA-Z0-9\s]*$/;
+    if (!regex.test(nameInput.value)) {
+      nameInput.style.borderColor = 'red';
+      red = true;
+    } else {
+      nameInput.style.borderColor = '';
+    }
+    updateSubmitButtonState();
+  });
+
+  // code for email input
+  var emailInput = document.querySelector('.email_input');
+  emailInput.addEventListener('input', function () {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value)) {
+      emailInput.style.borderColor = 'red';
+      red = true;
+    } else {
+      emailInput.style.borderColor = '';
+    }
+    updateSubmitButtonState();
+  });
+
+  // code for DOB input for not accepting past dates
+  var dobInput = document.querySelector('.dob_input');
+  dobInput.addEventListener('input', function () {
+    var enteredDate = new Date(dobInput.value);
+    var currentDate = new Date();
+    if (enteredDate > currentDate) {
+      dobInput.style.borderColor = 'red';
+      red = true;
+    } else {
+      dobInput.style.borderColor = '';
+    }
+    updateSubmitButtonState();
+  });
+
+  // code for confirming passwords
+  var passwordInput = document.querySelector('.pswd_input');
+  var confirmPasswordInput = document.querySelector('.re_pswd_input');
+  passwordInput.addEventListener('input', updatePasswordMatch);
+  confirmPasswordInput.addEventListener('input', updatePasswordMatch);
+
+  function updatePasswordMatch() {
+    passwordInput.type = 'password';
+    confirmPasswordInput.type = 'password';
+
+    var password = passwordInput.value;
+    var confirmPassword = confirmPasswordInput.value;
+
+    if (password !== confirmPassword) {
+      confirmPasswordInput.style.borderColor = 'red';
+      red = true;
+    } else {
+      confirmPasswordInput.style.borderColor = '';
+    }
+    updateSubmitButtonState();
+  }
+	
+  // Function to update submit button state based on red flag
+
+});
+
+
+</script>
+
+</html>

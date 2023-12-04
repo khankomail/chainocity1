@@ -1,0 +1,283 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  height: 125px;
+}
+
+.back_arrow_div{
+  display: flex;
+  width: 15%;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+}
+
+.title_div{
+  display: flex;
+  width: 75%;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+}
+
+.body{
+  display: flex;
+  flex-direction: column;
+  height: 719px;
+  width: 100%;
+}
+
+.plans_div{
+  display: flex;
+  width: 100%;
+  height: 330px;
+}
+
+.basic_plan_div{
+display: flex;
+flex-direction: column;
+background-color: rgb(164, 217, 234);
+flex: 1;
+align-items: center;
+justify-content: space-around;
+}
+
+.basic_name_div{
+  font-size: 1.5rem;
+  text-decoration: underline;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.basic_detail_div{
+  max-width: 100%;
+  margin-left: 10px;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.basic_btn_div{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.basic_btn{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Hover styles */
+.basic_btn:hover {
+  background-color: #ddd;
+  color: #555;
+  border-color: #555;
+}
+
+
+.gold_plan_div{
+display: flex;
+flex: 1;
+flex-direction: column;
+background-color: rgb(92, 92, 247);
+align-items: center;
+justify-content: space-around;
+}
+
+
+.gold_name_div{
+  font-size: 1.5rem;
+  flex: 1;
+  color: gold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.gold_name_txt{
+  background-color: black;
+  height: 50px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.gold_detail_div{
+  max-width: 100%;
+  margin-left: 10px;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.gold_btn_div{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.gold_btn{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Hover styles */
+.gold_btn:hover {
+  background-color: #ddd;
+  color: #555;
+  border-color: #555;
+}
+
+.ref_code_div{
+  background-color: #038169;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  align-items: center;
+  justify-content: center;
+}
+.ref_code_placement{
+  margin-bottom: 40px;
+  max-width: 100%;
+  display: flex;
+}
+
+.ref_code_input{
+  height: 40px;
+  width: 220px;
+ border-radius: 5px;
+ font-size: 1.2rem;
+}
+
+.submit_btn{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.submit_btn:hover {
+  background-color: #ddd;
+  color: #555;
+  border-color: #555;
+}
+
+.note_div{
+  display: flex;
+  background-color: black;
+  color: white;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.note_txt{
+  margin: 20px;
+}
+
+@media only screen and (min-width:768px){
+
+
+  .body{
+    background-color: #038169;
+    height: 899px;
+  }
+  
+.plans_div{
+  height: 650px;
+  font-size: 1.5rem;
+}
+.basic_name_div{
+  font-size: 2rem;
+}
+
+.gold_name_txt{
+  font-size: 2rem;
+  height: 70px;
+  width: 90px;
+}
+
+.basic_btn{
+  font-size: 1.8rem;
+}
+
+.gold_btn{
+  font-size: 1.8rem;
+}
+
+.submit_btn{
+  font-size: 1.8rem;
+}
+
+.ref_code_div{
+  height: 300px;
+}
+
+.ref_code_input{
+  height:60px ;
+  width: 300px;
+  font-size: 1.6rem;
+}
+
+}
+
+
+@media only screen and (min-width:1000px){
+  .back_arrow_div{
+    font-size: 4rem;
+  }
+.header{
+  height: 100px;
+}
+  .title_div{
+    justify-content: start;
+    font-size: 3rem;
+  }
+}

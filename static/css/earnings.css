@@ -1,0 +1,167 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  height: 125px;
+}
+
+.back_arrow_div{
+  display: flex;
+  width: 15%;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+}
+
+.title_div{
+  display: flex;
+  width: 75%;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+}
+
+.body{
+  display: flex;
+  width: 100%;
+  height: 719px;
+  background-color: #e69b06;
+  flex-direction: column;
+}
+
+.balc_div{
+  width: 100%;
+  display: flex;
+  height: 60px;
+  font-size: 1.5rem;
+}
+
+.balc_txt{
+  margin: 20px;
+}
+
+
+
+.withdraw_div{
+  width: 100%;
+  height: 100px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.withdraw_btn{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  height: 40px;
+}
+
+/* Hover styles */
+.withdraw_btn:hover {
+  background-color: #ddd;
+  color: #555;
+  border-color: #555;
+}
+
+.list_label_div{
+  width: 100%;
+  height: 60px;
+  font-size: 1.5rem;
+}
+
+.list_txt{
+  margin: 20px;
+}
+
+.earnings_list_div_container{
+display: flex;
+width: 100%;
+height: 500px;
+flex-direction: column;
+overflow-y: scroll;
+}
+
+
+.earnings_list_div{
+  display: flex;
+  max-width: 100%;
+  margin: 10px;
+  height: 40px;
+  margin-bottom: 0;
+  
+  
+}
+
+.name{
+border: 1px solid white;
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+
+background-color: black;
+color: white;
+}
+
+.amount{
+border: 1px solid white;
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: black;
+color: white;
+}
+
+.level{
+  border: 1px solid white;
+  flex: 1;
+  display: flex;
+justify-content: center;
+align-items: center;
+background-color: black;
+color: white;
+}
+
+
+@media only screen and (min-width:768px){
+  .body{
+    height: 899px;
+  }
+}
+
+
+@media only screen and (min-width:1000px){
+
+  .header{
+    height: 100px;
+  }
+
+  .back_arrow_div{
+    font-size: 4rem;
+  }
+
+
+  .title_div{
+    justify-content: start;
+  }
+
+  .body{
+    height: 471px;
+  }
+}

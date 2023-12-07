@@ -13,25 +13,33 @@
   <div class="main_container">
 
     <div class="header">
-
       <div class="back_arrow_div">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="" style="color: white;">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
       </div>
-
       <div class="title_div">
         Task Complete
       </div>
-
     </div>
 
     <div class="body">
+      {% for key, value in transaction_data.items %}
+        <p><strong>{{ key }}:</strong> {{ value }}</p>
+      {% endfor %}
 
-      <p class="body_txt">Your Request has been 
-        submitted Successfully!</p>
-
+      <p class="body_txt">Your Request has been submitted Successfully!</p>
+      
     </div>
 
+    <form method="post">
+      {% csrf_token %}
+      <!-- Your additional form fields go here -->
+    </form>
+
   </div>
-  
-</body>
+
+
+
+
 </html>

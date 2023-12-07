@@ -29,44 +29,48 @@
 		</div>
 
 		<div class="body">
+
+			{% if messages %}
+				<div class="alert alert-danger">
+					{% for message in messages %}
+						{{ message }}
+					{% endfor %}
+				</div>
+			{% endif %}
 			
 
-			<div class="email_div">
-
-				<div class="email_label">
-					Enter Your Email
+			<form method="post" action="{% url 'login' %}">
+				{% csrf_token %}
+				<div class="email_div">
+					<div class="email_label">
+						Enter Your Username
+					</div>
+					<div class="email_label_div">
+						<input class="email_input" name="username">
+					</div>
 				</div>
 
-				<div class="email_label_div">
-					<input class="email_input">
+				<div class="pswd_div">
+					<div class="pswd_label">
+						Enter Password
+					</div>
+					<div class="pswd_input_div">
+						<input class="pswd_input" name="password" type="password">
+					</div>
+					<a href="{% url 'comfirmdetail' %}">
+						<div class="forget_pswd_div">
+							Forgot password?
+						</div>
+					</a>
+					
 				</div>
-				
-			</div>
 
-			<div class="pswd_div">
-				
-				<div class="pswd_label">
-					Enter Password
+				<div class="submit_div">
+					<button class="submit_btn" type="submit">
+						Submit
+					</button>
 				</div>
-
-				<div class="pswd_input_div">
-					<input class="pswd_input">
-				</div>
-        
-        <div class="forget_pswd_div">
-          forgot password?
-
-        </div>
-
-			</div>
-
-			
-
-			<div class="submut_div">
-				<button class="submit_btn">
-					Submit
-				</button>
-			</div>
+			</form>
 
 		</div>
 

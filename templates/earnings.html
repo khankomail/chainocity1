@@ -15,7 +15,9 @@
     <div class="header">
 
       <div class="back_arrow_div">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="{% url 'home' id_string=id_string %}" style="color: white;">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
       </div>
 
       <div class="title_div">
@@ -27,15 +29,23 @@
     <div class="body">
 
       <div class="balc_div">
-        <p class="balc_txt">Your current Earning: xxx</p>
+        <p class="balc_txt">{{username}}'s current Earning: {{earning}} Rs</p>
       </div>
-
+'
       
       <div class="withdraw_div">
 
-        <button class="withdraw_btn">
-          Withdraw
-        </button>
+        {% if earning > 1999 %}
+        <a href="{% url 'withdraw' id_string=id_string %}" style="color: white;">
+          <button class="withdraw_btn">
+            Withdraw
+          </button>
+        </a>
+          {% else %}
+            <button class="withdraw_btn" disabled style="opacity: .5">
+              Minimum earning needs to be 2000 Rs to withdraw
+            </button>
+          {% endif %}
 
       </div>
 
@@ -43,15 +53,15 @@
 
       <div  class=list_label_div>
 
-        <p class="list_txt">List:</p>
+        <!-- <p class="list_txt">List:</p> -->
 
       </div>
 
       <div class="earnings_list_div_container">
 
-          <div class="earnings_list_div">
+          <!-- <div class="earnings_list_div">
             <div class="name">
-              Name
+              Name 
             </div>
     
             <div class="amount">
@@ -62,8 +72,37 @@
               First
             </div>
     
-          </div>
+          </div> -->
           
+          <div class="affiliation_users">
+
+            <div class="affiliation_users_name">
+              Name
+            </div>
+  
+            <div class="affiliation_users_email">
+              Email
+            </div>
+  
+          </div>
+  
+          {% if users %}
+          {% for user in users %}
+  
+          <div class="affiliation_users">
+  
+            <div class="affiliation_users_name">
+              {{ user.username }}
+            </div>
+  
+            <div class="affiliation_users_email">
+              {{ user.email }}
+            </div>
+  
+          </div>
+          {% endfor %}
+          {% else %}
+          {% endif %}
 
 
 

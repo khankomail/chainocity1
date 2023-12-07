@@ -15,7 +15,10 @@
     <div class="header">
 
       <div class="back_arrow_div">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="{% url 'affiliatecode' id_string=id_string %}" style="color: white;">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        
       </div>
 
       <div class="title_div">
@@ -55,9 +58,18 @@
 
           <div class="basic_btn_div">
 
-            <button class="basic_btn">
-              purchase
-            </button>
+            <a href="{% url 'checkout' plan='basic' %}">
+              <div 
+              {% if package %} class="disabled" {% endif %}>
+                  <button class="basic_btn" {% if package %}disabled style="opacity: .5;" {% endif %}>
+                      {% if not package %}
+                          Purchase
+                      {% else %}
+                          Already Bought
+                      {% endif %}
+                  </button>
+              </div>
+          </a>
 
           </div>
 
@@ -90,35 +102,47 @@
 
           <div class="gold_btn_div">
 
+            <a href="{% url 'checkout' plan='gold' %}">
             <button class="gold_btn">
-              purchase
+              Purchase
             </button>
-
+          </a>
           </div>
 
         </div>
 
       </div>
 
+      <form method="post" action="{% url 'packages' id_string=id_string %}">
+				{% csrf_token %}
       <div class="ref_code_div">
 
         <div class="ref_code_placement">
-
-          <input class="ref_code_input" placeholder="Referral code (optional)">
+          {% if referral_code_other %}
+          <input class="ref_code_input" placeholder="Cannot add another code" name="referral_code_other" disabled>
+          {% else %}
+          <input class="ref_code_input" placeholder="Referral code (optional)" name="referral_code_other" >
+          {% endif %}
+          
 
         </div>
 
         <div class="ref_code_submit">
-          <button class="submit_btn">
-            Submit
-          </button>
+          {% if referral_code_other %}
+          
+          {% else %}
+          <button class="submit_btn">Submit</button>
+          {% endif %}
         </div>
+        
 
 
       </div>
 
+      </form>
+
       <div class="note_div">
-        <div class="note_txt">Note: Payment option is easypesa only for now.
+        <div class="note_txt">Note: Payment option is Jazzcash only for now.
           <br>Make sure to keep a screenshoot of the transaction with you afterwards.</div>
 
       </div>

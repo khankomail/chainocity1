@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+</head>
+<body>
+
+<section class="showcase">
+    <div class="container">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h2>Part {{ PART }}: JAZZCASH Payment Gateway Integration in Django - Checkout</h2>
+        </div>
+        <span id="success-msg" class="payment-errors"></span>
+
+        <!-- JAZZCASH payment form -->
+        <form action="{{ JAZZCASH_HTTP_POST_URL }}" method="POST" id="myCCForm">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6 pb-5">
+                    <div class="row"></div>
+                    <!--Form with header-->
+                    <div class="card border-gray rounded-0">
+                        <div class="card-header p-0">
+                            <div class="bg-gray text-left py-2">
+                                <h5 class="pl-2"><strong>Product Name: </strong>{{ product_name }}</h5>
+                                <h6 class="pl-2"><strong>Product Price: </strong>{{ product_price }} PKR</h6>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="amount" value="{{ product_price }}">
+                        <input type="hidden" name="product_name" value="{{ product_name }}">
+                        <input type="hidden" name="product_id" value="{{ product_id }}">
+
+                        {% for key, value in post_data.items %}
+                            <input type="hidden" name="{{ key }}" value="{{ value }}">
+                        {% endfor %}
+
+                        <div class="card-body p-3">
+                            <div class="input-group-text">Pay With <img src=" static css/images/logo_JazzCash.png"></div>
+                            <p>JazzCash Mobile Account can be registered on any Jazz or Warid number</p>
+                            <p>Biometric-verified Jazz and Warid customers can self-register their Mobile Account simply by dialing *786#.</p>
+
+                            <div class="text-right">
+                                <a href="{% url 'index' %}" id="payBtn" class="btn btn-primary py-2">Back</a>
+                                <button type="submit" id="payBtn" class="btn btn-info py-2">Pay</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        
+    </div>
+</section>
+
+</body>
+</html>

@@ -19,25 +19,29 @@
 
 
 			<!-- Menu Overlay -->
-			<div id="menu-overlay" class="menu-overlay"></div>
+			
 
 			<!-- Menu Content -->
-			<div id="menu-content" class="menu-content">
+			<div id="menu-overlay" class="menu-overlay">
 
-				<div class="menu_option">
-					<a href="#" onclick="toggleMenu()">My Profile</a>
+				<div class="close_menu_btn">
+					<p class="close_x" onclick="toggleMenu()">X</p>
 				</div>
 
 				<div class="menu_option">
-					<a href="#" onclick="toggleMenu()">My Affiliate Link</a>
+					<a href="{% url 'profile' id_string=id_string %}" class="link_">My Profile</a>
 				</div>
 
 				<div class="menu_option">
-					<a href="#" onclick="toggleMenu()">My Affiliate Earning</a>
+					<a href="{% url 'affiliatecode' id_string=id_string %}" class="link_">My Affiliate Link</a>
 				</div>
 
 				<div class="menu_option">
-					<a href="#" onclick="toggleMenu()">Logout</a>
+					<a href="{% url 'earnings' id_string=id_string %}" class="link_">My Affiliate Earning</a>
+				</div>
+
+				<div class="menu_option">
+					<a href="{% url 'logout'  %}" class="link_">Logout</a>
 				</div>
 			  
 			</div>
@@ -49,6 +53,11 @@
 				</div>
 				
 			</div>
+
+			<div class="user_info_div">
+				Welcome! {{ username }} 
+				
+			</div>
 			
 
 		</div>
@@ -56,28 +65,47 @@
 		<div class="body">
 
 			<div class="note">
-				Note: Only users with a plan can use services.
+
+				{% if package == 'gold' %}
+    <p>Services are active for you.</p>
+{% elif package == 'basic' %}
+    <p>Note! You need {{ remaining_users }} users to use your referral code to activate servces.</p>
+{% else %}
+    <p>Note: Only users with a plan can use services.</p>
+{% endif %}
 			</div>
 
-			<div class="product_div">
+			{% for product in products %}
+    <div class="product_div">
 
-				<div class="p_title_div">
-					Product A
-				</div>
+        <div class="p_title_div">
+            {{ product.p_title }}
+        </div>
 
-				<div class="p_img_div">
-					<img class="p_img" src="/product A.jpg">
-				</div>
+        <div class="p_img_div">
+            <img class="p_img" src="{{ product.p_img.url }}" alt="{{ product.p_title }}">
+        </div>
 
-				<div class="p_stock_div">
-					stocked
-				</div>
+        <div class="price_stock_div">
+            <div class="price_div">
+							Rs {{ product.p_price }} 
+            </div>
+            <div class="p_stock_div">
+                {% if product.p_stocked %}
+                    In Stock
+                {% else %}
+                    Out of Stock
+                {% endif %}
+            </div>
+        </div>
 
-				<div class="p_dsc_div">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore alias dolorum cumque! Minima nostrum 
-				</div>
+        <div class="p_dsc_div">
+            {{ product.p_description }}
+        </div>
 
-			</div>
+    </div>
+{% endfor %}
+
 
 
 
@@ -98,31 +126,42 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-  var menuOverlay = document.getElementById('menu-overlay');
-  var menuContent = document.getElementById('menu-content');
 
-  menuOverlay.style.width = '0';
-  menuContent.style.left = '-250px';
+document.addEventListener('DOMContentLoaded', function() {
+ var menuOverlay = document.getElementById('menu-overlay');
+ var menuContent = document.getElementById('menu-content');
 
-  // Close the menu when clicking outside of it
-  menuOverlay.addEventListener('click', function() {
-    toggleMenu();
-  });
+ menuOverlay.style.width = '0';
+ menuContent.style.left = '-250px';
+
+ //Close the menu when clicking outside of it
+ menuOverlay.addEventListener('click', function(event) {
+    // Check if the clicked element is a close button
+    if (!event.target.matches('.close_x')) {
+        toggleMenu();
+    }
+ });
+
+ //Close the menu when the close button is clicked
+ var closeBtns = document.getElementsByClassName('close_x');
+ for (var i = 0; i < closeBtns.length; i++) {
+    closeBtns[i].addEventListener('click', function() {
+      toggleMenu();
+    });
+ }
 });
 
 function toggleMenu() {
-  var menuOverlay = document.getElementById('menu-overlay');
-  var menuContent = document.getElementById('menu-content');
+ var menuOverlay = document.getElementById('menu-overlay');
+ var menuContent = document.getElementById('menu-content');
 
-  if (getComputedStyle(menuOverlay).width === '100%' || menuOverlay.style.width === '100%') {
+ if (getComputedStyle(menuOverlay).width === '0px' || menuOverlay.style.width === '0') {
+    menuOverlay.style.width = '50%';
+    menuContent.style.left = '0';
+ } else {
     menuOverlay.style.width = '0';
     menuContent.style.left = '-250px';
-  } else {
-    menuOverlay.style.width = '100%';
-    menuContent.style.left = '0';
-  }
+ }
 }
-
   </script>
 </html>

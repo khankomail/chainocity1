@@ -15,7 +15,9 @@
     <div class="header">
 
       <div class="back_arrow_div">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="{% url 'home' id_string=id_string  %}" style="color: white;">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
       </div>
       <div class="title_div">
         My Affiliate Code
@@ -28,8 +30,18 @@
       <div class="upr_body_div">
 
         <div class="note">
-          Buy a plan to unlock your code
-        </div>
+          {% if package %}
+              {% if package == "gold" %}
+                  <p>Your plan: {{ package }}</p>
+              {% elif package == "basic" %}
+                  <p>Your plan is {{ package }}. Want to upgrade?</p>
+              {% else %}
+                  <p>Unknown plan: {{ package }}</p>
+              {% endif %}
+          {% else %}
+              <p>Buy a plan to get your code</p>
+          {% endif %}
+      </div>
 
         <div class="code_gen_container">
 
@@ -38,11 +50,29 @@
           </div>
 
           <div class="actual_code_placement">
-            123213ax
+            {% if package %}
+        <p> {{ referral_code_own }}</p>
+    {% else %}
+        <p>Unavailable</p>
+    {% endif %}
           </div>
 
+          
+
           <div class="gen_code_div">
-            <button class="gen_code_btn">Generate code</button>
+            <a href="{% url 'packages' id_string=id_string %}">
+              {% if package %}
+                  {% if package == 'gold' %}
+                      <button class="gen_code_btn" disabled style="opacity: 0.5;">Generate Code</button>
+                  {% elif package == 'basic' %}
+                      <button class="gen_code_btn">Packages</button>
+                  {% else %}
+                      <button class="gen_code_btn">Generate code</button>
+                  {% endif %}
+              {% else %}
+                  <button class="gen_code_btn">Generate code</button>
+              {% endif %}
+          </a>
           </div>
 
         </div>
@@ -51,7 +81,7 @@
 
       <div class="lower_body_div">
 
-        <div class="affiliation_users_label">
+        <!-- <div class="affiliation_users_label">
           Affiliation Users
         </div>
 
@@ -67,17 +97,31 @@
 
         </div>
 
-        <!-- <div class="affiliation_users">
+        {% if users %}
+        {% for user in users %}
+
+        <div class="affiliation_users">
 
           <div class="affiliation_users_name">
-            Name
+            {{ user.username }}
           </div>
 
           <div class="affiliation_users_email">
-            Email
+            {{ user.email }}
           </div>
 
-        </div> -->
+        </div>
+        {% endfor %}
+        {% else %}
+        {% endif %} -->
+
+
+      
+
+
+
+
+
         
 
       </div>

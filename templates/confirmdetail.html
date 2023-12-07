@@ -15,10 +15,15 @@
 	<div class="main_container">
 		
 		<div class="header">
-			
+
 			<div class="back_arrow_div">
-				<i class="fa-solid fa-arrow-left"></i>
-			</div>
+			
+			<a href="{% url 'login' %}" style="color: white;">
+				
+					<i class="fa-solid fa-arrow-left"></i>
+	
+			</a>
+		</div>
 
 			<div class="title_div">
 				Forget Password
@@ -27,8 +32,15 @@
 		</div>
 
 		<div class="body">
-			
-
+			{% if messages %}
+				<div class="alert alert-danger">
+					{% for message in messages %}
+						{{ message }}
+					{% endfor %}
+				</div>
+			{% endif %}
+			<form method="post" action="{% url 'comfirmdetail' %}">
+				{% csrf_token %}
 			<div class="email_div">
 
 				<div class="email_label">
@@ -36,7 +48,7 @@
 				</div>
 
 				<div class="email_label_div">
-					<input class="email_input">
+					<input class="email_input" name="email">
 				</div>
 				
 			</div>
@@ -48,7 +60,7 @@
 				</div>
 
 				<div class="pswd_input_div">
-					<input class="pswd_input">
+					<input class="pswd_input" name="dob" type="date">
 				</div>
         
 
@@ -61,7 +73,7 @@
 					Submit
 				</button>
 			</div>
-
+		</form>
 		</div>
 
 	</div>

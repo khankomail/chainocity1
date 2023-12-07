@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'myapp'
 ]
 
 MIDDLEWARE = [
@@ -122,3 +124,30 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# added manually ###########
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")   #this line is responsible for static folder inclusion
+]
+
+AUTH_USER_MODEL = 'myapp.ChainUser'       # this line is responible for the absract user type
+
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'myapp.backends.EmailOrUsernameModelBackend',  # Replace 'yourapp' with the name of your app
+# ]
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / "media"
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+STATICFILES_DIRS = (
+  os.path.join(BASE_DIR,'static'),
+)
+
+JAZZCASH_MERCHANT_ID = config('JAZZCASH_MERCHANT_ID')
+JAZZCASH_PASSWORD = config('JAZZCASH_PASSWORD')
+JAZZCASH_INTEGERITY_SALT = config('JAZZCASH_INTEGERITY_SALT')
+JAZZCASH_HTTP_POST_URL= config('JAZZCASH_HTTP_POST_URL')

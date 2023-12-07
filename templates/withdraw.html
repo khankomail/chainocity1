@@ -15,7 +15,9 @@
     <div class="header">
 
       <div class="back_arrow_div">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="{% url 'earnings' id_string=user_id %}" style="color: white;">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
       </div>
 
       <div class="title_div">
@@ -25,9 +27,13 @@
     </div>
 
     <div class="body">
-
+      {% if messages %}
+      {{ message }}
+      
+          
+  {% endif %}
       <div class="balc_div">
-        <p class="balc_txt">Your current Balance: xxx</p>
+        <p class="balc_txt">Your current Balance: {{earning}} Rs</p>
       </div>
 
       <div class="platform_div">
@@ -37,31 +43,42 @@
         </div>
         <div class="platform_choice">
           <option class="platform_option">
-            Easypesa
+            Jazzcash
           </option>
         </div>
 
       </div>
 
-      <div class="acc_no_div">
-
-        <div class="acc_label">
-          Enter your Account number:
+     
+      
+      <form method="post" action="{% url 'withdraw' id_string=user_id %}">
+        {% csrf_token %}
+        <div class="acc_no_div">
+    
+            <div class="acc_label">
+                Enter amount
+            </div>
+    
+            <div class="acc_input_div">
+                <input class="amount_input" placeholder="" name="amount" type="number"> Rs
+            </div>
+    
+            <div class="acc_label">
+                Enter your Account number:
+            </div>
+    
+            <div class="acc_input_div">
+                <input class="acc_input" name="acc_no" type="number">
+            </div>
+    
         </div>
-
-        <div class="acc_input_div">
-          <input class="acc_input">
+    
+        <div class="submit_div">
+            <button class="submit_btn">
+                Submit
+            </button>
         </div>
-
-      </div>
-
-      <div class="submit_div">
-
-        <button class="submit_btn">
-          Submit
-        </button>
-
-      </div>
+    </form>
       
     </div>
 

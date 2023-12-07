@@ -17,7 +17,10 @@
     <div class="header">
 
       <div class="back_arrow_div">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="{% url 'home' id_string=id_string  %}" style="color: white;">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        
       </div>
 
       <div class="title_div">
@@ -30,7 +33,11 @@
 
       <div class="plan_div">
 
-        Your Plan: xxx
+        {% if package %}
+        <p>Your plan: {{ package }}</p>
+    {% else %}
+        <p>Your plan: Free User</p>
+    {% endif %}
 
       </div>
 
@@ -38,12 +45,12 @@
 
         <div class="name_label_div">
 
-          Name:
+          Name: 
 
         </div>
 
         <div class="user_name">
-          userName
+          {{ username }}
         </div>
 
       </div>
@@ -55,7 +62,7 @@
         </div>
 
         <div class="user_email">
-          awd12@gmail.com
+          {{ email }}
         </div>
 
       </div>
@@ -67,15 +74,16 @@
         </div>
 
         <div class="user_dob">
-          1/jan/2000
+          {{ dob }}
         </div>
 
       </div>
 
       <div class="cng_pswd_div">
 
-        <button class="cng_pswd_btn">Change Password</button>
-
+        <a href="{% url 'newpassword' id_string=id_string %}">
+        <button class="cng_pswd_btn" >Change Password</button>
+      </a>
       </div>
 
     </div>

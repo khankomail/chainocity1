@@ -161,7 +161,7 @@ flex-direction: column;
   }
 
   .body{
-    height: 750px;
+    height: 1100px;
   }
   
   
@@ -169,6 +169,7 @@ flex-direction: column;
     margin-top: 50px;
     margin-left: 250px;
     font-size: 1.2rem;
+    width: 300px;
   }
   
   .upr_img_div{

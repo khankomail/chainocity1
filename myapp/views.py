@@ -12,10 +12,10 @@ from decouple import config
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseServerError
-JAZZCASH_MERCHANT_ID = config('JAZZCASH_MERCHANT_ID')
-JAZZCASH_PASSWORD = config('JAZZCASH_PASSWORD')
-JAZZCASH_INTEGERITY_SALT = config('JAZZCASH_INTEGERITY_SALT')
-JAZZCASH_HTTP_POST_URL =config ('JAZZCASH_HTTP_POST_URL')
+# JAZZCASH_MERCHANT_ID = config('JAZZCASH_MERCHANT_ID')
+# JAZZCASH_PASSWORD = config('JAZZCASH_PASSWORD')
+# JAZZCASH_INTEGERITY_SALT = config('JAZZCASH_INTEGERITY_SALT')
+# JAZZCASH_HTTP_POST_URL =config ('JAZZCASH_HTTP_POST_URL')
 
 # Create your views here.
 def index(request):
@@ -384,8 +384,8 @@ def checkout(request, plan):
         "pp_Version": "1.1",
         "pp_TxnType": "MWALLET",
         "pp_Language": "EN",
-        "pp_MerchantID": JAZZCASH_MERCHANT_ID,
-        "pp_Password": JAZZCASH_PASSWORD,
+        "pp_MerchantID": 'MC62624',
+        "pp_Password": '9b9e2w8zg7',
         "pp_BankID": "TBANK",
         "pp_ProductID": "RETL",
         "pp_TxnRefNo": pp_TxnRefNo,
@@ -405,7 +405,7 @@ def checkout(request, plan):
     }
 
     # 5. Create an alphabetically ordered string and skip blank fields
-    sorted_string = JAZZCASH_INTEGERITY_SALT + '&'.join(f"{k}={v}" for k, v in post_data.items() if v)
+    sorted_string = '39y8s6y9w1' + '&'.join(f"{k}={v}" for k, v in post_data.items() if v)
 
     # Sha256 hash encoding
     pp_SecureHash = hashlib.sha256(sorted_string.encode()).hexdigest()
@@ -416,7 +416,7 @@ def checkout(request, plan):
     # Insert post_data into the database for validating secure hash if needed
 
     # Render the checkout.html template with the post_data
-    return render(request, 'checkout.html', {'post_data': post_data, 'package': package, 'JAZZCASH_HTTP_POST_URL':JAZZCASH_HTTP_POST_URL})
+    return render(request, 'checkout.html', {'post_data': post_data, 'package': package, 'JAZZCASH_HTTP_POST_URL':'https://sandbox.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform/'})
 
 
 def confirmdetail(request):

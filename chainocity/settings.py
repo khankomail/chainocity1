@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-szg=q2&h+b2h$neuvxjapd5^i#!&g@94juz3+v6o6oc1k0og1(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['chainocity.shop', 'www.chainocity.shop']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
